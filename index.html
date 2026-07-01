@@ -11,15 +11,77 @@
 </head>
 <body>
   <canvas id="graph" aria-hidden="true"></canvas>
-  <header id="nav"></header>
+  <header id="nav"><div class="wrap nav-in">
+  <a class="mark" href="/"><span class="accent">&#9656;</span> ARABA</a>
+  <nav class="nav-links">
+    <a href="#work">Work</a><a href="#thesis">Thesis</a>
+    <a href="#audit" class="nav-cta">Book a Memory Audit</a>
+  </nav>
+</div></header>
   <main>
-    <section id="hero"></section>
-    <section id="thesis" class="section"></section>
-    <section id="work" class="section"></section>
-    <section id="machine" class="section"></section>
-    <section id="audit" class="section"></section>
+    <section id="hero"><div class="wrap hero-in">
+  <p class="eyebrow">// forward deployed founder</p>
+  <h1>Build the infrastructure.<br><span class="accent">Own the category.</span></h1>
+  <p class="lede">One operator. An AI machine. I build and own the infrastructure categories where AI touches money and memory.</p>
+  <div class="hero-cta">
+    <a href="#audit" class="btn">Book a Memory Audit</a>
+    <span class="hero-note">Live: invobi.app</span>
+  </div>
+</div></section>
+    <section id="thesis" class="section"><div class="wrap">
+  <p class="eyebrow">the thesis</p>
+  <h2>Intelligence got cheap.<br><span class="accent">Accountability didn't.</span></h2>
+  <p class="body-lg">AI moved me up a layer. The work is not where the hands are anymore, it is in mapping the system the machine runs. I build and own the categories where that machine touches your money and your memory. The human in the compute layer.</p>
+</div></section>
+    <section id="work" class="section"><div class="wrap">
+  <p class="eyebrow">receipts, not claims</p>
+  <h2>Money in. Spend governed. Memory engineered.</h2>
+  <div class="cards">
+    <a class="card" href="https://invobi.app">
+      <h3>invobi</h3>
+      <p>Live multi-rail invoicing SaaS. 23 currencies, three payment rails, one router.</p>
+      <span class="card-go accent">Live &#8594;</span>
+    </a>
+    <a class="card" href="https://www.npmjs.com/package/purse">
+      <h3>Purse</h3>
+      <p>Open-source agent payment governance. Set limits, require approval over a threshold, get a tamper-evident log of every spend. <code>npm i purse</code>.</p>
+      <span class="card-go accent">Open source &#8594;</span>
+    </a>
+    <div class="card">
+      <h3>Company Brain</h3>
+      <p>The enterprise AI brain. A client's memory, engineered into an editable, operable graph instead of lost in a black box.</p>
+      <span class="card-go">In build</span>
+    </div>
+    <div class="card">
+      <h3>Animation reel</h3>
+      <p>Remotion-built motion for the Money Rails channel and product demos. The craft behind the systems.</p>
+      <span class="card-go">Reel</span>
+    </div>
+  </div>
+</div></section>
+    <section id="machine" class="section"><div class="wrap">
+  <p class="eyebrow">how the operator works</p>
+  <h2>Audit. Build. Ship. In days, not quarters.</h2>
+  <p class="body-lg">One operator plus an AI machine, the whole operation mapped as a graph, shipping where the problem lives. The moat compounds: money in through invobi, agent spend governed by Purse, memory engineered by Company Brain.</p>
+</div></section>
+    <section id="audit" class="section"><div class="wrap audit-in">
+  <p class="eyebrow accent">the memory audit</p>
+  <h2>Map your operation. See what only lives in your head.</h2>
+  <p class="body-lg">A free Memory Audit of how your work and knowledge are (dis)organized. It is the first step into Company Brain.</p>
+  <form id="audit-form" class="audit-form" novalidate>
+    <input id="audit-email" name="email" type="email" required
+      placeholder="you@company.com" autocomplete="email" aria-label="Your email">
+    <input id="audit-note" name="note" type="text"
+      placeholder="What do you run? (optional)" aria-label="What you run">
+    <button type="submit" class="btn">Request audit</button>
+  </form>
+  <p id="audit-status" class="audit-status" role="status" aria-live="polite"></p>
+</div></section>
   </main>
-  <footer id="footer"></footer>
+  <footer id="footer"><div class="wrap footer-in">
+  <span class="mark"><span class="accent">&#9656;</span> ARABA</span>
+  <span class="footer-meta">invobi.app &nbsp;&middot;&nbsp; @Olurabian &nbsp;&middot;&nbsp; MSc Data Science</span>
+</div></footer>
   <script type="module" src="graph.js"></script>
   <script type="module" src="form.js"></script>
 </body>
