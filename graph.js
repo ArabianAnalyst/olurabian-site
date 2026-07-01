@@ -128,8 +128,8 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined'){
     }
     function start(){
       cancelAnimationFrame(raf);
+      draw(); // paint an initial frame immediately (no blank first paint)
       if (shouldAnimate(reduced)) raf = requestAnimationFrame(frame);
-      else draw(); // single static frame
     }
     canvas.addEventListener('mousemove', e => {
       mx = e.clientX; my = e.clientY;
