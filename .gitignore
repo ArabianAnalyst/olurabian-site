@@ -1,0 +1,5 @@
+.vercel
+.superpowers/
+node_modules/
+_check-*.png
+_final-*.png
