@@ -4,3 +4,7 @@ preview-hero.png
 preview-mobile.png
 og.html
 render-og.js
+tests/
+package.json
+node_modules/
+*.md
