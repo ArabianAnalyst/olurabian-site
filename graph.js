@@ -90,9 +90,12 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined'){
     let graph, hover = -1, mx = -1, my = -1, raf = 0;
 
     function resize(){
-      W = canvas.clientWidth = window.innerWidth;
-      H = canvas.clientHeight = Math.min(window.innerHeight, 900);
-      canvas.width = W * dpr; canvas.height = H * dpr;
+      W = window.innerWidth;
+      H = window.innerHeight;
+      canvas.style.width = W + 'px';
+      canvas.style.height = H + 'px';
+      canvas.width = Math.floor(W * dpr);
+      canvas.height = Math.floor(H * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       graph = createGraph({ width: W, height: H, count: W < 640 ? 22 : 36, seed: 11 });
     }
