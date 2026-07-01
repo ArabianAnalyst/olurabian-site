@@ -19,3 +19,8 @@ h1,h2,h3{font-family:var(--disp);font-weight:800;letter-spacing:-.02em;line-heig
 .section{padding:96px 0;border-top:1px solid var(--line)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
 @media (max-width:640px){.section{padding:64px 0}.wrap{padding:0 20px}}
+#graph{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;
+  pointer-events:auto;display:block}
+#nav,main,#footer{position:relative;z-index:1}
+/* the hero is transparent so the graph shows through; lower sections are solid */
+.section, #footer{background:var(--bg)}

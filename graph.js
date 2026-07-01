@@ -79,3 +79,69 @@ export const shouldAnimate = (reduced) => !reduced;
 
 function clamp(v, lo, hi){ return v < lo ? lo : v > hi ? hi : v; }
 function dist2(a, b){ const dx=a.x-b.x, dy=a.y-b.y; return dx*dx+dy*dy; }
+
+// ---- browser bootstrap (no effect under node:test) ----
+if (typeof window !== 'undefined' && typeof document !== 'undefined'){
+  const canvas = document.getElementById('graph');
+  if (canvas){
+    const ctx = canvas.getContext('2d');
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let graph, hover = -1, mx = -1, my = -1, raf = 0;
+
+    function resize(){
+      W = canvas.clientWidth = window.innerWidth;
+      H = canvas.clientHeight = Math.min(window.innerHeight, 900);
+      canvas.width = W * dpr; canvas.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      graph = createGraph({ width: W, height: H, count: W < 640 ? 22 : 36, seed: 11 });
+    }
+    function draw(){
+      ctx.clearRect(0, 0, W, H);
+      ctx.lineWidth = 1;
+      for (const [i, j] of graph.edges){
+        const a = graph.nodes[i], b = graph.nodes[j];
+        ctx.strokeStyle = 'rgba(120,120,132,0.10)';
+        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+      }
+      graph.nodes.forEach((n, idx) => {
+        const lit = n.accent || idx === hover;
+        ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI*2);
+        ctx.fillStyle = lit ? '#F5CE1A' : '#3A3A42';
+        if (lit){ ctx.shadowColor = 'rgba(245,206,26,0.6)'; ctx.shadowBlur = 14; }
+        ctx.fill(); ctx.shadowBlur = 0;
+        if (n.named && (idx === hover || n.accent)){
+          ctx.font = '500 13px JetBrains Mono, monospace';
+          ctx.fillStyle = '#EDEDEF';
+          ctx.fillText(n.label, n.x + n.r + 8, n.y + 4);
+        }
+      });
+    }
+    function frame(){
+      stepGraph(graph, 16, { width: W, height: H });
+      if (mx >= 0) hover = hitTest(graph, mx, my);
+      draw();
+      raf = requestAnimationFrame(frame);
+    }
+    function start(){
+      cancelAnimationFrame(raf);
+      if (shouldAnimate(reduced)) raf = requestAnimationFrame(frame);
+      else draw(); // single static frame
+    }
+    canvas.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      const h = hitTest(graph, mx, my);
+      canvas.style.cursor = (h >= 0 && graph.nodes[h].named) ? 'pointer' : 'default';
+    });
+    canvas.addEventListener('click', e => {
+      const h = hitTest(graph, e.clientX, e.clientY);
+      const sec = h >= 0 ? graph.nodes[h].section : null;
+      if (sec) document.querySelector(sec)?.scrollIntoView({ behavior: 'smooth' });
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) cancelAnimationFrame(raf); else start();
+    });
+    window.addEventListener('resize', () => { resize(); start(); });
+    resize(); start();
+  }
+}
