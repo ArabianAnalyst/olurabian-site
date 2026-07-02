@@ -41,6 +41,8 @@ h1 .it{font-style:italic}
 .index-list{font-size:15px;line-height:1.95}
 .index-list .h{color:var(--ink);font-weight:600}
 .index-list span.d{color:var(--muted)}
+.now p{margin-top:10px;font-size:15px;line-height:1.5;color:#3a3a3a;max-width:34ch}
+.now .label{margin-bottom:2px}
 .pull{font-family:var(--serif);font-style:italic;font-size:30px;line-height:1.12}
 .hero-cta{margin-top:22px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
 .btn{display:inline-block;background:var(--accent);color:#fff;font-weight:600;font-family:var(--sans);
