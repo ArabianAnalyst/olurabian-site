@@ -16,7 +16,11 @@ img{max-width:100%;height:auto}
 /* masthead */
 #nav{border-bottom:2px solid var(--ink);position:sticky;top:0;background:var(--paper);z-index:10}
 .nav-in{display:flex;justify-content:space-between;align-items:center;height:66px}
-.mark{font-weight:600;font-size:16px;letter-spacing:.22em;text-transform:uppercase}
+.mark{font-weight:600;font-size:16px;letter-spacing:.22em;text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:10px}
+.avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;display:block;
+  border:1px solid var(--faint)}
+.f-brand .avatar{width:32px;height:32px}
 .nav-links{display:flex;gap:24px;font-size:14px;color:var(--muted)}
 .nav-links a:hover{color:var(--ink)}
 .nav-links a.nav-cta{color:var(--accent);font-weight:600}
