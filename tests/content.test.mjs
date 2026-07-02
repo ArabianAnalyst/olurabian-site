@@ -6,7 +6,8 @@ import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const html = readFileSync(join(root, 'index.html'), 'utf8');
-const SHIPPING = ['index.html', 'styles.css', 'form.js', 'og.html', 'api/subscribe.js', 'field-notes.html'];
+const SHIPPING = ['index.html', 'styles.css', 'form.js', 'og.html', 'api/subscribe.js',
+  'field-notes.html', 'privacy.html', 'terms.html', '404.html', 'favicon.svg'];
 const fieldNotes = readFileSync(join(root, 'field-notes.html'), 'utf8');
 
 test('no em dashes anywhere in the page', () => {
