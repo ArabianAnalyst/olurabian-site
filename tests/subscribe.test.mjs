@@ -39,3 +39,29 @@ test('returns 502 when resend fails', async () => {
     { resendKey:'key', audienceId:'aud', fetchImpl:fakeFetch });
   assert.equal(r.status, 502);
 });
+
+test('honeypot filled: fake success, never calls resend', async () => {
+  let called = false;
+  const fakeFetch = async () => { called = true; return { ok:true, json: async () => ({}) }; };
+  const r = await handleSubscribe(
+    { method:'POST', body:{ email:'a@b.co', company_url:'http://spam' } },
+    { resendKey:'key', audienceId:'aud', fetchImpl:fakeFetch });
+  assert.equal(r.status, 200);
+  assert.equal(r.json.ok, true);
+  assert.equal(called, false);
+});
+
+test('blocks a disallowed Origin with 403', async () => {
+  const r = await handleSubscribe(
+    { method:'POST', body:{ email:'a@b.co' }, origin:'https://evil.example' },
+    { resendKey:'key', audienceId:'aud', allowedOrigins:['https://www.olurabian.com'] });
+  assert.equal(r.status, 403);
+});
+
+test('allows a whitelisted Origin', async () => {
+  const fakeFetch = async () => ({ ok:true, json: async () => ({ id:'x' }) });
+  const r = await handleSubscribe(
+    { method:'POST', body:{ email:'a@b.co' }, origin:'https://www.olurabian.com' },
+    { resendKey:'key', audienceId:'aud', fetchImpl:fakeFetch, allowedOrigins:['https://www.olurabian.com'] });
+  assert.equal(r.status, 200);
+});

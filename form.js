@@ -23,15 +23,20 @@ if (typeof document !== 'undefined'){
   if (form){
     const emailEl = document.getElementById('audit-email');
     const noteEl = document.getElementById('audit-note');
+    const hpEl = document.getElementById('audit-hp');
     const status = document.getElementById('audit-status');
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       status.className = 'audit-status';
+      if (hpEl && hpEl.value){ // honeypot filled: silently accept, do not send
+        status.textContent = "Got it. I'll be in touch."; status.classList.add('ok'); form.reset(); return;
+      }
       if (!isValidEmail(emailEl.value)){
         status.textContent = 'Enter a valid email.'; status.classList.add('err'); return;
       }
       status.textContent = 'Sending...';
-      const r = await submitAudit(buildPayload(emailEl.value, noteEl.value));
+      const payload = { ...buildPayload(emailEl.value, noteEl.value), company_url: hpEl ? hpEl.value : '' };
+      const r = await submitAudit(payload);
       status.textContent = r.message;
       status.classList.add(r.ok ? 'ok' : 'err');
       if (r.ok) form.reset();
