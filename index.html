@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ARABA. Forward Deployed Founder</title>
 <meta name="description" content="ARABA. Forward Deployed Founder. One operator, an AI machine, building and owning the infrastructure categories where AI touches money and memory. Creator of invobi and Purse.">
+<meta name="theme-color" content="#FBFAF7">
 <link rel="canonical" href="https://olurabian.com/">
+<meta property="og:type" content="website">
 <meta property="og:title" content="ARABA - Forward Deployed Founder">
 <meta property="og:description" content="One operator. An AI machine. Building where AI touches money and memory. invobi, Purse, Company Brain.">
-<meta property="og:type" content="website">
 <meta property="og:image" content="https://olurabian.com/og-image.png">
 <meta property="og:url" content="https://olurabian.com/">
 <meta name="twitter:card" content="summary_large_image">
@@ -16,83 +17,129 @@
 <meta name="twitter:image" content="https://olurabian.com/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <canvas id="graph" aria-hidden="true"></canvas>
   <header id="nav"><div class="wrap nav-in">
-  <a class="mark" href="/"><span class="accent">&#9656;</span> ARABA</a>
+  <a class="mark" href="/">ARABA</a>
   <nav class="nav-links">
     <a href="#work">Work</a><a href="#thesis">Thesis</a><a href="/field-notes">Field Notes</a>
     <a href="#audit" class="nav-cta">Book a Memory Audit</a>
   </nav>
 </div></header>
   <main>
-    <section id="hero"><div class="wrap hero-in">
-  <p class="eyebrow">// forward deployed founder</p>
-  <h1>Build the infrastructure.<br><span class="accent">Own the category.</span></h1>
-  <p class="lede">One operator running an AI machine. The machine does the hands. I map the system it runs, in the categories where AI touches money and memory.</p>
-  <div class="hero-cta">
-    <a href="#audit" class="btn">Book a Memory Audit</a>
-    <span class="hero-note">Live in production: invobi.app</span>
-  </div>
-</div></section>
-    <section id="thesis" class="section"><div class="wrap">
-  <p class="eyebrow">the thesis</p>
-  <h2>Intelligence got cheap.<br><span class="accent">Accountability didn't.</span></h2>
-  <p class="body-lg">AI moved the work up a layer. Hands stopped being the constraint, the map became the constraint. Someone has to design the system the machine runs, and answer for what it does with your money and your memory. That is my job. The human in the compute layer.</p>
-</div></section>
-    <section id="work" class="section"><div class="wrap">
-  <p class="eyebrow">receipts, not claims</p>
-  <h2>Money in. Spend governed. Memory engineered.</h2>
-  <div class="cards">
-    <a class="card" href="https://invobi.app">
-      <h3>invobi</h3>
-      <p>Invoicing that clears on three payment rails. 23 currencies, one router, live in production.</p>
-      <span class="card-go accent">Live &#8594;</span>
-    </a>
-    <a class="card" href="https://www.npmjs.com/package/purse">
-      <h3>Purse</h3>
-      <p>Spending rules for AI agents, open source. Hard limits, human approval above a threshold, a tamper-evident log of every spend. <code>npm i purse</code>.</p>
-      <span class="card-go accent">Open source &#8594;</span>
-    </a>
-    <div class="card">
-      <h3>Company Brain</h3>
-      <p>A company's memory, rebuilt as a graph you can read, edit, and operate. Not a black box. An asset.</p>
-      <span class="card-go">In build</span>
-    </div>
-    <div class="card">
-      <h3>Animation reel</h3>
-      <p>Remotion motion systems behind the Money Rails channel and every product demo. The same precision, pointed at pixels.</p>
-      <span class="card-go">Reel</span>
-    </div>
-  </div>
-</div></section>
-    <section id="machine" class="section"><div class="wrap">
-  <p class="eyebrow">how the operator works</p>
-  <h2>Audit. Build. Ship. Days, not quarters.</h2>
-  <p class="body-lg">One operator, one AI machine, the whole operation mapped as a graph. Every ship feeds the next: invobi moves the money in, Purse governs what agents spend, Company Brain keeps the memory operable. The moat is the loop.</p>
-</div></section>
-    <section id="audit" class="section"><div class="wrap audit-in">
-  <p class="eyebrow accent">the memory audit</p>
-  <h2>Map your operation. Find what lives only in your head.</h2>
-  <p class="body-lg">A free Memory Audit: a map of where your knowledge actually lives, and where it quietly disappears. It is step one of Company Brain.</p>
-  <form id="audit-form" class="audit-form" novalidate>
-    <input id="audit-email" name="email" type="email" required
-      placeholder="you@company.com" autocomplete="email" aria-label="Your email">
-    <input id="audit-note" name="note" type="text"
-      placeholder="What do you run? (optional)" aria-label="What you run">
-    <button type="submit" class="btn">Request audit</button>
-  </form>
-  <p id="audit-status" class="audit-status" role="status" aria-live="polite"></p>
-</div></section>
+    <section class="hero"><div class="wrap hero-grid">
+      <div class="hero-l">
+        <p class="label accent">Forward Deployed Founder</p>
+        <h1>Build the infrastructure. <span class="it">Own the category.</span></h1>
+        <p class="stand">One operator running an AI machine. The machine does the hands. I map the system it runs, in the categories where AI touches money and memory.</p>
+      </div>
+      <aside class="hero-r">
+        <div>
+          <p class="label">Live work</p>
+          <div class="index-list">
+            <span class="h">invobi</span> <span class="d">multi-rail invoicing</span><br>
+            <span class="h">Purse</span> <span class="d">agent spend governance</span><br>
+            <span class="h">Company Brain</span> <span class="d">enterprise memory</span>
+          </div>
+          <p class="label" style="margin-top:26px">Based</p>
+          <div class="index-list"><span class="d">Lagos, and wherever the problem is</span></div>
+        </div>
+        <div>
+          <p class="pull">The human in the compute layer.</p>
+          <div class="hero-cta">
+            <a href="#audit" class="btn">Book a Memory Audit</a>
+            <span class="btn-note">Free. Live: invobi.app</span>
+          </div>
+        </div>
+      </aside>
+    </div></section>
+
+    <section id="thesis" class="section"><div class="wrap two">
+      <p class="label">The thesis</p>
+      <div>
+        <h2>Intelligence got cheap. <span class="it">Accountability didn't.</span></h2>
+        <p class="body-lg">AI moved the work up a layer. Hands stopped being the constraint, the map became the constraint. Someone has to design the system the machine runs, and answer for what it does with your money and your memory. That is my job. The human in the compute layer.</p>
+      </div>
+    </div></section>
+
+    <section id="work" class="section index"><div class="wrap">
+      <div class="two" style="margin-bottom:34px">
+        <p class="label">The index</p>
+        <h2>Money in. Spend governed. <span class="it">Memory engineered.</span></h2>
+      </div>
+      <a class="row" href="https://invobi.app">
+        <span class="num">01</span>
+        <div><h3>invobi</h3><p>Invoicing that clears on three payment rails. 23 currencies, one router, live in production.</p></div>
+        <span class="go">Live &#8599;</span>
+      </a>
+      <a class="row" href="https://www.npmjs.com/package/purse">
+        <span class="num">02</span>
+        <div><h3>Purse</h3><p>Spending rules for AI agents, open source. Hard limits, human approval above a threshold, a tamper-evident log of every spend. <code>npm i purse</code>.</p></div>
+        <span class="go">Open source &#8599;</span>
+      </a>
+      <div class="row dim">
+        <span class="num">03</span>
+        <div><h3>Company Brain</h3><p>A company's memory, rebuilt as a graph you can read, edit, and operate. Not a black box. An asset.</p></div>
+        <span class="go">In build</span>
+      </div>
+      <div class="row dim">
+        <span class="num">04</span>
+        <div><h3>Animation reel</h3><p>Remotion motion systems behind the Money Rails channel and every product demo. The same precision, pointed at pixels.</p></div>
+        <span class="go">Reel</span>
+      </div>
+    </div></section>
+
+    <section id="machine" class="section"><div class="wrap two">
+      <p class="label">How the operator works</p>
+      <div>
+        <h2>Audit. Build. Ship. <span class="it">Days, not quarters.</span></h2>
+        <p class="body-lg">One operator, one AI machine, the whole operation mapped as a graph. Every ship feeds the next: invobi moves the money in, Purse governs what agents spend, Company Brain keeps the memory operable. The moat is the loop.</p>
+      </div>
+    </div></section>
+
+    <section class="section"><div class="wrap two">
+      <p class="label">From the field notes</p>
+      <div>
+        <h2>Dispatches from the <span class="it">compute layer.</span></h2>
+        <nav class="fnt-list">
+          <a href="/field-notes">The layer moved.</a>
+          <a href="/field-notes">Intelligence got cheap. Accountability didn't.</a>
+          <a href="/field-notes">The money rail.</a>
+          <a href="/field-notes">The governance line.</a>
+          <a href="/field-notes">The memory graph.</a>
+          <a href="/field-notes">The operator at the center.</a>
+          <a href="/field-notes">What the machine can't map.</a>
+        </nav>
+      </div>
+    </div></section>
+
+    <section id="audit" class="section"><div class="wrap two">
+      <p class="label accent">The memory audit</p>
+      <div>
+        <h2>Map your operation. <span class="it">Find what lives only in your head.</span></h2>
+        <p class="body-lg">A free Memory Audit: a map of where your knowledge actually lives, and where it quietly disappears. It is step one of Company Brain.</p>
+        <form id="audit-form" class="audit-form" novalidate>
+          <div class="field">
+            <label for="audit-email">Your email</label>
+            <input id="audit-email" name="email" type="email" required placeholder="you@company.com" autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="audit-note">What do you run? (optional)</label>
+            <input id="audit-note" name="note" type="text" placeholder="One line" aria-label="What you run">
+          </div>
+          <button type="submit" class="btn">Request audit</button>
+        </form>
+        <p id="audit-status" class="audit-status" role="status" aria-live="polite"></p>
+      </div>
+    </div></section>
   </main>
-  <footer id="footer"><div class="wrap footer-in">
-  <span class="mark"><span class="accent">&#9656;</span> ARABA</span>
-  <span class="footer-meta">invobi.app &nbsp;&middot;&nbsp; @Olurabian &nbsp;&middot;&nbsp; MSc Data Science</span>
+  <footer id="footer"><div class="wrap colophon">
+  <span class="mark">ARABA</span>
+  <span>Set in Instrument Serif &amp; Instrument Sans. Built by one operator and an AI machine.</span>
+  <span>invobi.app &middot; @Olurabian &middot; MSc Data Science</span>
 </div></footer>
-  <script type="module" src="graph.js"></script>
   <script type="module" src="form.js"></script>
 </body>
 </html>

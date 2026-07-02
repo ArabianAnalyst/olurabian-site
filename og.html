@@ -1,31 +1,35 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"/>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet"/>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{--accent:#5B8CFF;}
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html,body{width:1200px;height:630px;background:#09090B;overflow:hidden;}
-  .card{position:relative;width:1200px;height:630px;padding:80px 84px;
-    display:flex;flex-direction:column;justify-content:center;
-    font-family:'Geist',sans-serif;color:#ECECEE;}
-  .bar{position:absolute;top:0;left:0;right:0;height:7px;background:var(--accent);}
-  .glow{position:absolute;top:-200px;right:-160px;width:620px;height:620px;
-    background:radial-gradient(circle,rgba(91,140,255,0.16) 0%,transparent 62%);}
-  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.26em;
-    text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:34px;}
-  h1{font-weight:800;font-size:74px;line-height:1.02;letter-spacing:-0.035em;max-width:17ch;}
-  h1 .hl{color:var(--accent);}
-  .foot{position:absolute;left:84px;right:84px;bottom:64px;display:flex;
-    align-items:center;justify-content:space-between;
-    font-family:'JetBrains Mono',monospace;font-size:26px;color:rgba(236,236,238,0.6);}
-  .foot .name{color:#ECECEE;font-weight:600;}
-  .foot .url{color:var(--accent);font-weight:600;}
-</style></head>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1200px;height:630px}
+body{background:#FBFAF7;color:#0E0E0E;font-family:'Instrument Sans',system-ui,sans-serif;
+  padding:60px 64px;display:flex;flex-direction:column;justify-content:space-between}
+.top{display:flex;justify-content:space-between;align-items:baseline;
+  border-bottom:2px solid #0E0E0E;padding-bottom:22px}
+.name{font-weight:600;font-size:22px;letter-spacing:.24em;text-transform:uppercase}
+.role{font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:#1B34E0;font-weight:600}
+h1{font-family:'Instrument Serif';font-weight:400;font-size:104px;line-height:.92;letter-spacing:-.01em;max-width:15ch}
+h1 .it{font-style:italic}
+.bottom{display:flex;justify-content:space-between;align-items:baseline;
+  border-top:2px solid #0E0E0E;padding-top:22px;font-size:20px;color:#4a4a4a}
+.bottom .k{color:#0E0E0E;font-weight:600}
+</style>
+</head>
 <body>
-  <div class="card">
-    <div class="bar"></div><div class="glow"></div>
-    <div class="eyebrow">▸ FORWARD DEPLOYED FOUNDER</div>
-    <h1>Build the infrastructure.<br><span class="hl">Own the category.</span></h1>
-    <div class="foot"><span class="name">ARABA</span><span class="url">invobi.app</span></div>
+  <div class="top">
+    <span class="name">ARABA</span>
+    <span class="role">Forward Deployed Founder</span>
   </div>
-</body></html>
+  <h1>Build the infrastructure. <span class="it">Own the category.</span></h1>
+  <div class="bottom">
+    <span><span class="k">invobi</span> &middot; <span class="k">Purse</span> &middot; <span class="k">Company Brain</span></span>
+    <span>olurabian.com</span>
+  </div>
+</body>
+</html>
