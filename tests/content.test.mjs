@@ -6,7 +6,8 @@ import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const html = readFileSync(join(root, 'index.html'), 'utf8');
-const SHIPPING = ['index.html', 'styles.css', 'graph.js', 'form.js', 'og.html', 'api/subscribe.js'];
+const SHIPPING = ['index.html', 'styles.css', 'graph.js', 'form.js', 'og.html', 'api/subscribe.js', 'field-notes.html'];
+const fieldNotes = readFileSync(join(root, 'field-notes.html'), 'utf8');
 
 test('no em dashes anywhere in the page', () => {
   assert.equal(html.includes('—'), false, 'found an em dash');
@@ -31,5 +32,15 @@ test('required verified proof and copy are present', () => {
 test('banned proof never appears', () => {
   for (const s of ['FoodCatering', 'Alex Lewis']) {
     assert.equal(html.toLowerCase().includes(s.toLowerCase()), false, `banned: ${s}`);
+  }
+});
+
+test('field notes page has required copy and no banned proof', () => {
+  for (const s of [
+    'Field Notes from the Compute Layer', 'Memory Audit',
+    'invobi', 'Purse', 'Company Brain',
+  ]) assert.ok(fieldNotes.includes(s), `field-notes missing: ${s}`);
+  for (const s of ['FoodCatering', 'Alex Lewis']) {
+    assert.equal(fieldNotes.toLowerCase().includes(s.toLowerCase()), false, `field-notes banned: ${s}`);
   }
 });
