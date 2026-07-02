@@ -71,6 +71,9 @@ img{max-width:100%;height:auto}
 .fn-head{position:relative;padding:120px 0 20px;overflow:hidden}
 .fn-head::before{content:"";position:absolute;inset:0;z-index:-1;
   background:radial-gradient(620px 320px at 50% -12%, rgba(245,206,26,.07), transparent 70%)}
+.fn-map{position:absolute;top:-30px;right:-40px;width:min(600px,56%);
+  z-index:-1;pointer-events:none;opacity:.85}
+@media (max-width:760px){.fn-map{display:none}}
 .fn-title{font-family:var(--disp);font-weight:800;letter-spacing:-.02em;line-height:1.04;
   font-size:clamp(34px,5.5vw,60px);max-width:820px;overflow-wrap:break-word}
 .fn-entry h2{overflow-wrap:break-word}
