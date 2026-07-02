@@ -8,7 +8,7 @@ export async function handleSubscribe({ method, body }, { resendKey, audienceId,
   const email = (body && body.email || '').trim();
   const note = (body && body.note || '').trim();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return { status:400, json:{ error:'invalid email' } };
-  if (!resendKey) return { status:500, json:{ error:'not configured' } };
+  if (!resendKey || !audienceId) return { status:500, json:{ error:'not configured' } };
   try {
     const res = await fetchImpl(`https://api.resend.com/audiences/${audienceId}/contacts`, {
       method:'POST',

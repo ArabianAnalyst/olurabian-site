@@ -12,6 +12,14 @@ test('rejects invalid email', async () => {
   assert.equal(r.status, 400);
 });
 
+test('returns 500 when audienceId is missing', async () => {
+  const r = await handleSubscribe(
+    { method:'POST', body:{ email:'a@b.co' } },
+    { resendKey:'key', audienceId:null });
+  assert.equal(r.status, 500);
+  assert.equal(r.json.error, 'not configured');
+});
+
 test('calls resend and returns 200 on success', async () => {
   let called;
   const fakeFetch = async (url, opts) => { called = { url, opts };
