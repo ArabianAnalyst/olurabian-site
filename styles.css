@@ -134,7 +134,7 @@ h1{font-family:var(--serif);font-weight:400;font-size:clamp(56px,8.5vw,116px);li
   letter-spacing:-.01em;margin-top:24px}
 h1 .it{font-style:italic}
 .stand{margin-top:30px;font-size:20px;line-height:1.5;max-width:42ch;color:#2b2b2b}
-.index-list{font-size:15px;line-height:1.95}
+.index-list{font-size:15px;line-height:1.7}
 .index-list .h{color:var(--ink);font-weight:600}
 .index-list span.d{color:var(--muted)}
 .now p{margin-top:10px;font-size:15px;line-height:1.5;color:#3a3a3a;max-width:34ch}
