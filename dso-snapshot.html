@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The DSO Snapshot. A free tool by ARABA</title>
+<meta name="description" content="Eight questions. See how much of your agency's cash is trapped in overdue invoices, and what late payment is costing you a year.">
+<meta name="theme-color" content="#FBFAF7">
+<link rel="canonical" href="https://olurabian.com/dso-snapshot">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The DSO Snapshot. A free tool by ARABA">
+<meta property="og:description" content="Eight questions. See how much of your agency's cash is trapped in overdue invoices, and what late payment is costing you a year.">
+<meta property="og:image" content="https://olurabian.com/og-image.png">
+<meta property="og:url" content="https://olurabian.com/dso-snapshot">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@Olurabian">
+<meta name="twitter:image" content="https://olurabian.com/og-image.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/dso-snapshot.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="brand" href="/"><i>&#9656;</i> olurabian</a>
+    <div class="kicker">The DSO Snapshot</div>
+  </div>
+
+  <div class="stage">
+    <div class="prog hidden" id="progWrap"><i id="progBar"></i></div>
+
+    <section class="screen on" id="intro">
+      <h1>How much of your cash is trapped in unpaid invoices?</h1>
+      <p class="lead">Eight questions about how your agency invoices and how you actually get paid. At the end you get one number: the cash sitting in your receivables right now, and what late payment costs you a year.</p>
+      <button class="btn" id="startBtn">Start the snapshot &rarr;</button>
+      <p class="mini">About two minutes. Nothing to share, nothing to install.</p>
+    </section>
+
+    <section class="screen" id="qscreen">
+      <div class="count" id="count">Question 1 of 8</div>
+      <div class="q" id="qtext"></div>
+      <div class="opts" id="opts"></div>
+      <div class="nav"><button class="back" id="backBtn">&larr; Back</button></div>
+    </section>
+
+    <section class="screen" id="result">
+      <div class="band" id="bandLabel"></div>
+      <div class="num" id="bigNum"></div>
+      <div class="numlabel" id="numLabel"></div>
+      <div class="scorepill" id="scorePill"></div>
+      <div class="diag" id="diag"></div>
+      <div class="cta">
+        <a class="btn" href="https://cal.com/olurabian/getpaid">Get your free Payment Audit &rarr;</a>
+        <a class="btn ghost" href="/">Back to olurabian.com</a>
+      </div>
+      <p class="mini">The Payment Audit is free: send your aged-debtors export and I send back your real DSO, the exact cash trapped, and your five slowest-paying clients. No pitch.</p>
+      <div class="foot">
+        <span>olurabian.com / Money Rails</span>
+        <span><a href="#" id="restartLink">Start over</a></span>
+      </div>
+    </section>
+  </div>
+</div>
+<script src="/dso-snapshot.js"></script>
+</body>
+</html>
