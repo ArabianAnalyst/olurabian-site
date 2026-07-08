@@ -180,6 +180,9 @@ h2 .it{font-style:italic}
 .door .go .arw{display:inline-block;transition:transform .18s ease}
 .door:hover .go .arw{transform:translate(3px,-3px)}
 @media (max-width:820px){.doors{grid-template-columns:1fr}}
+.reel{display:block;width:100%;max-width:520px;height:auto;margin:40px auto 0;
+  border:1px solid var(--faint);background:#0B0D12}
+.reel-cap{margin:14px auto 0;max-width:520px;text-align:center;font-size:14px;color:var(--muted)}
 
 /* from the field notes */
 .fnt-list{margin-top:26px;columns:2;column-gap:44px}
