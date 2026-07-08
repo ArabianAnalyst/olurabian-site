@@ -167,6 +167,7 @@ h2 .it{font-style:italic}
 .index .row .go{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
 .index .row.dim .go{color:var(--muted)}
 .index code{font-family:var(--serif);font-style:italic;font-size:18px}
+.index .idx-services{margin-top:52px;margin-bottom:4px}
 
 /* from the field notes */
 .fnt-list{margin-top:26px;columns:2;column-gap:44px}
