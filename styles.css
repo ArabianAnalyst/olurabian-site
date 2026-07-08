@@ -189,6 +189,9 @@ h2 .it{font-style:italic}
 .audit-status{margin-top:16px;font-size:15px;min-height:20px}
 .audit-status.ok{color:var(--accent)}
 .audit-status.err{color:#B0281B}
+.form-consent{margin-top:14px;font-size:13px;color:var(--muted);max-width:660px;line-height:1.5}
+.form-consent a{color:var(--accent)}
+.form-consent a:hover{text-decoration:underline}
 
 /* footer */
 main .section:last-of-type{border-bottom:0}
