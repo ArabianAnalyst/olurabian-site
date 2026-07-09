@@ -1,0 +1,57 @@
+/* Whitepaper reading page — editorial long-form layout.
+   Loaded after styles.css. Reuses brand tokens (--paper, --ink, --accent, etc). */
+
+.wp-head{padding:74px 0 40px;border-bottom:2px solid var(--ink)}
+.wp-head .wrap{max-width:820px}
+.wp-kicker{display:flex;gap:16px;flex-wrap:wrap;align-items:baseline}
+.wp-title{font-family:var(--serif);font-weight:400;font-size:clamp(40px,6.4vw,82px);
+  line-height:.95;letter-spacing:-.01em;margin-top:22px;max-width:18ch}
+.wp-byline{margin-top:28px;font-size:16px;line-height:1.6;color:#3a3a3a;max-width:64ch}
+.wp-byline code{font-family:var(--mono,'JetBrains Mono',ui-monospace,monospace);font-size:14px;
+  background:var(--faint);padding:1px 6px;border-radius:3px}
+.wp-actions{margin-top:30px;display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.wp-dl{display:inline-flex;align-items:center;gap:9px;background:var(--accent);color:#fff;
+  font-weight:600;font-size:15px;padding:13px 22px;transition:background .16s ease,transform .16s ease}
+.wp-dl:hover{background:#132AB8;transform:translateY(-1px)}
+.wp-dl .arw{font-size:15px}
+.wp-back{font-size:14px;color:var(--muted)}
+.wp-back:hover{color:var(--ink)}
+
+/* article body */
+.wp-body{padding:56px 0 20px}
+.wp-body .wrap{max-width:820px}
+.wp-article{max-width:68ch}
+
+.wp-abstract{border-left:3px solid var(--accent);padding:6px 0 6px 28px;margin-bottom:52px}
+.wp-abstract .label{margin-bottom:14px}
+.wp-abstract p{font-family:var(--serif);font-size:23px;line-height:1.5;color:#1f1f1f}
+
+.wp-article h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.6vw,40px);
+  line-height:1.04;letter-spacing:-.01em;margin:56px 0 4px}
+.wp-article h2:first-of-type{margin-top:0}
+.wp-article > p{margin-top:20px;font-size:18px;line-height:1.68;color:#242424}
+.wp-article > p + p{margin-top:18px}
+.wp-article strong{font-weight:600;color:var(--ink)}
+.wp-article em{font-style:italic}
+.wp-article a{color:var(--accent)}
+.wp-article a:hover{text-decoration:underline}
+.wp-article code{font-family:var(--mono,'JetBrains Mono',ui-monospace,monospace);font-size:.86em;
+  background:var(--faint);padding:1px 6px;border-radius:3px}
+
+.wp-article ul{list-style:none;margin:22px 0 6px;padding:0}
+.wp-article ul li{position:relative;padding:11px 0 11px 26px;border-top:1px solid var(--faint);
+  font-size:17px;line-height:1.62;color:#242424}
+.wp-article ul li::before{content:"";position:absolute;left:0;top:20px;width:8px;height:8px;
+  background:var(--accent);border-radius:50%}
+.wp-article ul li strong{color:var(--ink)}
+
+/* references */
+.wp-refs{margin-top:14px}
+.wp-refs ul li::before{background:var(--muted)}
+.wp-refs ul li{font-size:16px;color:#3a3a3a}
+
+@media (max-width:820px){
+  .wp-title{font-size:clamp(34px,10vw,56px)}
+  .wp-abstract p{font-size:20px}
+  .wp-article > p{font-size:17px}
+}

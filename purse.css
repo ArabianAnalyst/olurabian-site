@@ -116,6 +116,8 @@
 .cta-row .btn{display:inline-flex;align-items:center;gap:8px}
 .cta-row .arw{display:inline-block;transition:transform .18s ease}
 .cta-row .btn:hover .arw{transform:translate(3px,-3px)}
+.wp-read{color:var(--accent);font-weight:600;font-size:15px}
+.wp-read:hover{text-decoration:underline}
 
 /* scroll reveal, only when purse.js has run */
 html.js .rv{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
