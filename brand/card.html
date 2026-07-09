@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1350px}
+body{background:#FBFAF7;color:#0E0E0E;font-family:'Instrument Sans',system-ui,sans-serif;position:relative;overflow:hidden}
+.grid{position:absolute;inset:0;background-image:
+  linear-gradient(rgba(27,52,224,.03) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(27,52,224,.03) 1px,transparent 1px);background-size:48px 48px}
+.pad{position:absolute;inset:72px;display:flex;flex-direction:column;justify-content:space-between}
+.top{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #0E0E0E;padding-bottom:24px}
+.name{font-weight:600;font-size:22px;letter-spacing:.24em;text-transform:uppercase}
+.eyebrow{font-size:19px;letter-spacing:.16em;text-transform:uppercase;color:#1B34E0;font-weight:600}
+.hook{font-family:'Instrument Serif';font-weight:400;font-size:78px;line-height:1.02;letter-spacing:-.01em;max-width:16ch}
+.hook em{font-style:italic}
+.bottom{display:flex;justify-content:space-between;align-items:baseline;border-top:2px solid #0E0E0E;padding-top:24px}
+.url{font-family:'Instrument Serif';font-size:30px;color:#1B34E0;letter-spacing:.02em}
+.by{font-size:19px;color:#4a4a4a}
+</style></head>
+<body>
+  <div class="grid"></div>
+  <div class="pad">
+    <div class="top"><span class="name">Araba</span><span class="eyebrow" id="eyebrow"></span></div>
+    <p class="hook" id="hook"></p>
+    <div class="bottom"><span class="url" id="url"></span><span class="by">Forward Deployed Founder</span></div>
+  </div>
+</body></html>

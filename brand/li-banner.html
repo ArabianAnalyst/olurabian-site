@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1584px;height:396px}
+body{background:#FBFAF7;color:#0E0E0E;font-family:'Instrument Sans',system-ui,sans-serif;
+  position:relative;overflow:hidden}
+/* faint blueprint grid, very subtle */
+.grid{position:absolute;inset:0;background-image:
+  linear-gradient(rgba(27,52,224,.035) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(27,52,224,.035) 1px,transparent 1px);
+  background-size:44px 44px}
+.frame{position:absolute;inset:26px;border-top:2px solid #0E0E0E;border-bottom:2px solid #0E0E0E}
+.wrap{position:absolute;inset:0;display:flex;align-items:center}
+/* headline sits right of where the avatar overlaps (bottom-left) */
+.block{margin-left:430px;max-width:900px}
+.eyebrow{font-size:17px;letter-spacing:.22em;text-transform:uppercase;color:#1B34E0;font-weight:600;margin-bottom:14px}
+h1{font-family:'Instrument Serif';font-weight:400;font-size:62px;line-height:.98;letter-spacing:-.01em}
+h1 .it{font-style:italic}
+.sub{margin-top:16px;font-family:'Instrument Serif';font-style:italic;font-size:26px;color:#3a3a3a}
+.url{position:absolute;right:52px;bottom:44px;font-size:18px;letter-spacing:.02em;color:#0E0E0E;font-weight:600}
+.mark{position:absolute;right:52px;top:44px;font-size:15px;letter-spacing:.24em;text-transform:uppercase;color:#6D6D6D;font-weight:600}
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="frame"></div>
+  <div class="wrap"><div class="block">
+    <p class="eyebrow">Forward Deployed Founder</p>
+    <h1>Build the infrastructure. <span class="it">Own the category.</span></h1>
+    <p class="sub">Where AI touches money and memory.</p>
+  </div></div>
+  <span class="mark">Araba</span>
+  <span class="url">olurabian.com</span>
+</body>
+</html>
