@@ -320,3 +320,6 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
   .lm-grid{grid-template-columns:1fr;gap:32px}
   .lm-preview{max-width:440px}
 }
+
+.wp-read{color:var(--accent);font-weight:600;font-size:15px}
+.wp-read:hover{text-decoration:underline}
