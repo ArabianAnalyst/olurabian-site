@@ -1,0 +1,11 @@
+/* /work — studio proof page. Loaded after styles.css, reuses brand tokens. */
+.work-hero{padding:72px 0 40px;border-bottom:2px solid var(--ink)}
+.work-hero .wrap{max-width:940px}
+.work-title{font-family:var(--serif);font-weight:400;font-size:clamp(40px,6.2vw,80px);
+  line-height:.97;letter-spacing:-.01em;margin-top:20px;max-width:16ch}
+.work-title .it{font-style:italic}
+.work-stand{margin-top:26px;font-size:19px;line-height:1.62;color:#333;max-width:60ch}
+.work-hero .hero-cta{margin-top:32px}
+.tier-price{font-family:var(--serif);font-style:italic;font-size:21px;color:var(--ink);white-space:nowrap}
+.offer-note{margin-top:26px;color:var(--muted);font-size:15px;max-width:58ch}
+.work-intro{max-width:60ch;margin-top:6px}
