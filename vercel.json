@@ -4,6 +4,9 @@
   "installCommand": null,
   "outputDirectory": ".",
   "cleanUrls": true,
+  "crons": [
+    { "path": "/api/nurture-cron", "schedule": "0 9 * * *" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
