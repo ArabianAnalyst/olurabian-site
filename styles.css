@@ -151,6 +151,7 @@ h1 .it{font-style:italic}
 h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,5vw,60px);line-height:1;letter-spacing:-.01em}
 h2 .it{font-style:italic}
 .body-lg{margin-top:22px;font-size:20px;line-height:1.55;max-width:60ch;color:#2b2b2b}
+.body{margin-top:18px;font-size:17px;line-height:1.6;max-width:60ch;color:#2b2b2b}
 .two{display:grid;grid-template-columns:190px 1fr;gap:40px}
 .two .label{padding-top:10px}
 .machine-fig{margin-top:52px}
@@ -168,6 +169,26 @@ h2 .it{font-style:italic}
 .index .row.dim .go{color:var(--muted)}
 .index code{font-family:var(--serif);font-style:italic;font-size:18px}
 .index .idx-services{margin-top:52px;margin-bottom:4px}
+
+/* deadlatch stack block */
+.index .row.stack{align-items:start}
+.stack-body{min-width:0}
+.stack-head h3{font-family:var(--serif);font-weight:400;font-size:32px;line-height:1}
+.stack-head p{margin-top:8px;color:#3a3a3a;font-size:16px;line-height:1.6;max-width:66ch}
+.stack-head .it-note{font-family:var(--serif);font-style:italic;color:var(--ink)}
+.index .row.stack:hover h3{color:var(--ink)}
+.legs{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:22px;
+  background:var(--faint);border:1px solid var(--faint)}
+.leg{display:flex;flex-direction:column;gap:6px;padding:20px 18px;background:var(--paper);
+  text-decoration:none;color:inherit;transition:background .16s ease}
+.leg:hover{background:#fff}
+.leg-k{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.leg-n{font-family:var(--serif);font-size:25px;line-height:1;transition:color .16s ease}
+.leg:hover .leg-n{color:var(--accent)}
+.leg-d{font-size:14px;line-height:1.5;color:#3a3a3a}
+.leg-d code{display:block;margin-top:6px;font-family:var(--serif);font-style:italic;font-size:15px;color:var(--muted)}
+.stack-go{align-self:start}
+@media (max-width:820px){.legs{grid-template-columns:1fr}}
 .doors{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
 .door{display:flex;flex-direction:column;align-items:flex-start;border:1px solid var(--faint);
   padding:36px;text-decoration:none;color:inherit;transition:border-color .18s ease}

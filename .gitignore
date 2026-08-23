@@ -3,3 +3,5 @@
 node_modules/
 _check-*.png
 _final-*.png
+
+.env*

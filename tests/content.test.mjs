@@ -25,9 +25,10 @@ test('no em dashes in any shipping file', () => {
 test('required verified proof and copy are present', () => {
   for (const s of [
     'Build the infrastructure', 'Own the category',
-    'Book a Memory Audit', 'Intelligence got cheap',
-    'invobi', 'Purse', 'Company Brain',
-    'id="audit-form"', 'id="audit-email"', 'id="audit-status"',
+    'Intelligence got cheap',
+    'invobi', 'Purse', 'blackbox', 'Company Brain', 'Get Paid',
+    'The Memory Audit', 'The DSO Snapshot',
+    'href="/memory-audit"', 'href="/dso-snapshot"',
   ]) assert.ok(html.includes(s), `missing: ${s}`);
 });
 
