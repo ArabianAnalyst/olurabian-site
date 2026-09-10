@@ -53,6 +53,11 @@
 .bb-btn:focus-visible{outline:2px solid var(--bb-signal);outline-offset:2px}
 .bb-hint{font-family:var(--mono);font-size:12px;color:var(--bb-dim)}
 .bb-hint b{color:var(--bb-signal);font-weight:600}
+.bb-note{margin-top:10px;font-family:var(--mono);font-size:12.5px;line-height:1.55;color:var(--bb-amber)}
+.bb-note[hidden]{display:none}
+.bb-note a{color:var(--bb-amber);text-decoration:none;border-bottom:1px solid var(--bb-amber)}
+.bb-note a:hover{color:var(--bb-ink);border-bottom-color:var(--bb-ink)}
+.bb-btn:disabled{opacity:.45;cursor:default;transform:none}
 
 /* ledger */
 .bb-ledger{margin-top:16px;max-height:440px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;
@@ -72,6 +77,8 @@ html.js .rec{animation:bb-in .32s ease both}
 
 .rec-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .seq{font-family:var(--mono);font-size:12px;color:var(--bb-dim)}
+.kind{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border:1px solid var(--bb-line);color:var(--bb-dim)}
+.plabel{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--bb-dim)}
 .action{font-family:var(--mono);font-size:13.5px;color:var(--bb-ink);font-weight:700}
 .chip{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;
   border:1px solid}

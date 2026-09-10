@@ -27,36 +27,32 @@
 
 /* ---- the live hash chain ---- */
 (function () {
-  const GENESIS = "0".repeat(64);
-  const enc = new TextEncoder();
+// chain-logic:start
+const GENESIS = "0".repeat(64);
+async function sha256hex(str){
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
+  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2,"0")).join("");
+}
+// The canonical form of @olurabian/receipt, exactly this key order. Demo-only
+// fields (anything starting with an underscore) never reach it.
+async function hashRecord(r){
+  return sha256hex(JSON.stringify({ id: r.id, ts: r.ts, kind: r.kind, payload: r.payload, prevHash: r.prevHash }));
+}
+// Mirrors verifyChain() in @olurabian/receipt. Same checks, same order, same
+// result shape, same reason strings.
+async function verifyChain(chain){
+  let prev = GENESIS;
+  for (let i = 0; i < chain.length; i++){
+    const r = chain[i];
+    if (r.prevHash !== prev) return { ok:false, brokenAt:i, id:r.id, reason:"prevHash mismatch (a record was inserted, removed, or reordered)" };
+    if (await hashRecord(r) !== r.hash) return { ok:false, brokenAt:i, id:r.id, reason:"hash mismatch (a record was altered)" };
+    prev = r.hash;
+  }
+  return { ok:true };
+}
+// chain-logic:end
 
-  async function sha256hex(str) {
-    const buf = await crypto.subtle.digest("SHA-256", enc.encode(str));
-    return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, "0")).join("");
-  }
-  // Mirrors hashRecord() in the package exactly: hash over every field except `hash`.
-  async function hashRecord(rec) {
-    const payload = JSON.stringify({
-      id: rec.id, ts: rec.ts, action: rec.action, input: rec.input,
-      outcome: rec.outcome, error: rec.error, latencyMs: rec.latencyMs,
-      cost: rec.cost, meta: rec.meta, prevHash: rec.prevHash,
-    });
-    return sha256hex(payload);
-  }
-  // Mirrors verifyChain(): recompute each record's hash from its CURRENT fields,
-  // and confirm each prevHash links to the previous record's stored hash.
-  async function verifyChain(chain) {
-    let prev = GENESIS;
-    for (let i = 0; i < chain.length; i++) {
-      const rec = chain[i];
-      if (rec.prevHash !== prev) return { ok: false, brokenAt: i, reason: "broken link" };
-      const { hash, ...rest } = rec;
-      if (await hashRecord(rest) !== hash) return { ok: false, brokenAt: i, reason: "altered contents" };
-      prev = rec.hash;
-    }
-    return { ok: true };
-  }
-
+  const TS = "2026-09-10T00:00:00.000Z";
   const SEED = [
     { action: "charge-card",   outcome: "ok",    latencyMs: 184, cost: 20.00 },
     { action: "query-ledger",  outcome: "ok",    latencyMs: 31,  cost: 0 },
@@ -79,25 +75,23 @@
   // null = the chain has changed since it was last checked (pending). Otherwise
   // it holds the last verifyChain() result. Only a Verify chain press sets it.
   let verifyResult = null;
+  // The truncation lesson. A dropped tail is invisible to verify(); the readout
+  // says so instead of pretending otherwise.
+  let droppedCount = 0;
+  let lastDropped = null;
 
   function short(h) { return h.slice(0, 10) + "\u2026"; }
 
+  // Every record is a Deadlatch receipt of kind "action". The action fields live
+  // under payload, prevHash and hash on the envelope.
   async function addRecord(tpl) {
     seq++;
     const prevHash = chain.length ? chain[chain.length - 1].hash : GENESIS;
-    const rec = {
-      id: "id-" + seq,
-      ts: "2026-07-28T00:00:00.000Z",
-      action: tpl.action,
-      outcome: tpl.outcome,
-      latencyMs: tpl.latencyMs,
-      cost: tpl.cost,
-      error: tpl.error,
-      prevHash,
-    };
+    const payload = { action: tpl.action, outcome: tpl.outcome, latencyMs: tpl.latencyMs, cost: tpl.cost };
+    if (tpl.error) payload.error = tpl.error;
+    const rec = { id: "id-" + seq, ts: TS, kind: "action", payload, prevHash };
     rec.hash = await hashRecord(rec);
-    rec._origAction = tpl.action;
-    rec._origCost = tpl.cost;
+    rec._orig = { action: tpl.action, cost: tpl.cost };
     rec._alt = false;
     rec._altField = null;
     chain.push(rec);
@@ -121,22 +115,24 @@
       led.innerHTML = '<div class="bb-empty">no records yet &middot; hit &ldquo;record an action&rdquo;</div>';
     }
     chain.forEach((rec, i) => {
-      const cls = "rec " + stateClass(i);
+      const p = rec.payload;
       const el = document.createElement("div");
-      el.className = cls;
+      el.className = "rec " + stateClass(i);
       el.style.animationDelay = (i * 18) + "ms";
 
       const actAlt = (rec._alt && rec._altField === "action") ? " altered" : "";
       const costAlt = (rec._alt && rec._altField === "cost") ? " altered" : "";
-      const costTxt = rec.cost ? ("$" + rec.cost.toFixed(2)) : "$0.00";
+      const costTxt = p.cost ? ("$" + p.cost.toFixed(2)) : "$0.00";
       const showBreak = verifyResult && !verifyResult.ok && i === verifyResult.brokenAt;
       el.innerHTML =
         '<div class="rec-head">' +
           '<span class="seq">' + rec.id + '</span>' +
-          '<span class="action tamperable' + actAlt + '" data-tamper="action" data-i="' + i + '" role="button" tabindex="0" title="click to tamper">' + rec.action + '</span>' +
-          '<span class="chip ' + rec.outcome + '">' + rec.outcome + '</span>' +
+          '<span class="kind">' + rec.kind + '</span>' +
+          '<span class="plabel">payload</span>' +
+          '<span class="action tamperable' + actAlt + '" data-tamper="action" data-i="' + i + '" role="button" tabindex="0" title="click to tamper">' + p.action + '</span>' +
+          '<span class="chip ' + p.outcome + '">' + p.outcome + '</span>' +
           '<span class="rec-meta">' +
-            '<span>' + rec.latencyMs + 'ms</span>' +
+            '<span>' + p.latencyMs + 'ms</span>' +
             '<span class="cost tamperable' + costAlt + '" data-tamper="cost" data-i="' + i + '" role="button" tabindex="0" title="click to tamper">' + costTxt + '</span>' +
           '</span>' +
         '</div>' +
@@ -144,7 +140,7 @@
           '<span><span class="link">prev</span> <span class="arrow">\u21B0</span> ' + short(rec.prevHash) + '</span>' +
           '<span><span class="link">hash</span> <span class="h">' + short(rec.hash) + '</span></span>' +
         '</div>' +
-        (showBreak ? '<div class="break-flag">chain broken here &middot; verify() \u2192 { ok:false, brokenAt:&quot;' + rec.id + '&quot; }</div>' : "");
+        (showBreak ? '<div class="break-flag">chain broken here &middot; verify() \u2192 { ok: false, brokenAt: ' + i + ', id: &quot;' + rec.id + '&quot; }</div>' : "");
       led.appendChild(el);
     });
 
@@ -160,12 +156,19 @@
     } else if (verifyResult.ok) {
       ro.dataset.state = "ok";
       verdict.textContent = "VERIFIED";
-      sub.textContent = "chain intact \u00B7 " + chain.length + " record" + (chain.length === 1 ? "" : "s");
+      const n = chain.length + " record" + (chain.length === 1 ? "" : "s");
+      sub.textContent = droppedCount > 0
+        ? "chain intact \u00B7 " + n + " \u00B7 " + droppedCount + " dropped from the tail and verify() cannot tell"
+        : "chain intact \u00B7 " + n;
     } else {
       ro.dataset.state = "broken";
       verdict.textContent = "BROKEN AT " + chain[verifyResult.brokenAt].id;
       sub.textContent = verifyResult.reason + " \u00B7 nothing past it can be trusted";
     }
+    document.getElementById("note").hidden = !(verifyResult && verifyResult.ok && droppedCount > 0);
+    const dropBtn = document.getElementById("drop");
+    dropBtn.textContent = lastDropped ? "Put it back" : "Drop the last record";
+    dropBtn.disabled = !lastDropped && chain.length === 0;
   }
 
   // mark the chain as changed since the last check, then repaint (pending state).
@@ -176,19 +179,21 @@
     render();
   }
 
-  // tamper: toggle a field between its original and an altered value. Does NOT
-  // recompute the record's stored hash, exactly what an attacker editing the log
-  // does. It also does not run verify, so the break stays hidden until you check.
+  // tamper: toggle a payload field between its original and an altered value.
+  // Does NOT recompute the record's stored hash, exactly what an attacker editing
+  // the log does. It also does not run verify, so the break stays hidden until
+  // you check.
   function tamper(i, field) {
     const rec = chain[i];
+    const p = rec.payload;
     if (!rec._alt) {
-      if (field === "cost") rec.cost = (rec._origCost || 0) + 5000;
-      else rec.action = rec._origAction === "refund-card" ? "charge-card" : "refund-card";
+      if (field === "cost") p.cost = (rec._orig.cost || 0) + 5000;
+      else p.action = rec._orig.action === "refund-card" ? "charge-card" : "refund-card";
       rec._alt = true;
       rec._altField = field;
     } else {
-      rec.cost = rec._origCost;
-      rec.action = rec._origAction;
+      p.cost = rec._orig.cost;
+      p.action = rec._orig.action;
       rec._alt = false;
       rec._altField = null;
     }
@@ -211,13 +216,26 @@
   });
   document.getElementById("verify").addEventListener("click", runVerify);
   document.getElementById("record").addEventListener("click", async () => {
+    lastDropped = null;
     const tpl = POOL[poolIx % POOL.length]; poolIx++;
     await addRecord(tpl);
     markChanged();
     render();
   });
+  document.getElementById("drop").addEventListener("click", () => {
+    if (lastDropped) {
+      chain.push(lastDropped);
+      lastDropped = null;
+      droppedCount--;
+    } else if (chain.length) {
+      lastDropped = chain.pop();
+      droppedCount++;
+    }
+    markChanged();
+    render();
+  });
   document.getElementById("reset").addEventListener("click", async () => {
-    chain = []; seq = 0; poolIx = 0;
+    chain = []; seq = 0; poolIx = 0; droppedCount = 0; lastDropped = null;
     for (const t of SEED) await addRecord(t);
     await runVerify();
   });

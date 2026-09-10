@@ -62,11 +62,13 @@
             <span class="bb-verdict" id="verdict">VERIFIED</span>
             <span class="bb-sub" id="sub">chain intact &middot; 0 records</span>
           </div>
+          <div class="bb-note" id="note" hidden>Truncation is the one edit a chain cannot detect on its own. That is what a witness is for. <a href="https://www.deadlatch.dev/log/the-head-leaves-the-building" target="_blank" rel="noopener">Read how the head leaves the building</a></div>
           <div class="bb-controls">
             <button class="bb-btn bb-btn-primary" id="verify" type="button">&#10003; Verify chain</button>
             <button class="bb-btn bb-btn-ghost" id="record" type="button">&#9656; Record an action</button>
+            <button class="bb-btn bb-btn-ghost" id="drop" type="button">Drop the last record</button>
             <button class="bb-btn bb-btn-ghost" id="reset" type="button">Reset</button>
-            <span class="bb-hint">click a <b>value</b> to tamper, then verify</span>
+            <span class="bb-hint">click a <b>value</b> to tamper, or drop the tail, then verify</span>
           </div>
           <div class="bb-ledger" id="ledger"></div>
         </div>
