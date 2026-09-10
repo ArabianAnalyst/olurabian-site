@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>blackbox. A record of what your agent did, and proof no one edited it.</title>
-<meta name="description" content="blackbox writes every AI-agent action to a hash-chained log. Alter, insert, or drop one record and the chain breaks at exactly that point. A live demo runs the real SHA-256 in your browser. Zero dependencies, on npm.">
+<meta name="description" content="blackbox writes every AI-agent action to a hash-chained receipt. Alter, insert, or remove a record from the middle and the chain breaks at exactly that point. Drop the tail and it cannot tell, which is what a witness is for. A live demo runs the real SHA-256 in your browser.">
 <meta name="author" content="Oluwasegun Araba">
 <meta name="theme-color" content="#FBFAF7">
 <link rel="canonical" href="https://www.olurabian.com/blackbox">
 <meta property="og:type" content="website">
 <meta property="og:title" content="blackbox. A record of what your agent did, and proof no one edited it.">
-<meta property="og:description" content="A tamper-evident flight recorder for AI agents. Every action is hash-chained. Tamper with one and the chain proves exactly where. Live demo, real SHA-256, zero dependencies.">
+<meta property="og:description" content="A tamper-evident flight recorder for AI agents. Every action is a hash-chained receipt. Tamper with one and the chain proves exactly where. Live demo, real SHA-256, zero dependencies.">
 <meta property="og:image" content="https://www.olurabian.com/og-blackbox.png">
 <meta property="og:image:secure_url" content="https://www.olurabian.com/og-blackbox.png">
 <meta property="og:image:width" content="1200">
@@ -73,7 +73,7 @@
           <div class="bb-ledger" id="ledger"></div>
         </div>
       </div>
-      <p class="reel-cap">Real SHA-256, computed in your browser. The same algorithm as the npm package.</p>
+      <p class="reel-cap">Real SHA-256, computed in your browser, over the same receipt envelope as the npm package.</p>
     </div></section>
 
     <section class="section rv"><div class="wrap">
@@ -124,7 +124,7 @@
       </div>
       <aside class="honest">
         <p class="label">Honest note</p>
-        <p class="honest-body">The demo above runs genuine SHA-256 through the browser's own crypto, hashing the same fields as the package, so when it says the chain broke, it broke. v1 is record, wrap, verify and query. Drift detection, remote sinks, and a Purse adapter are documented as next, not shipped.</p>
+        <p class="honest-body">The demo above runs genuine SHA-256 through the browser's own crypto over the same receipt envelope as the package, id, ts, kind, payload and prevHash, so when it says the chain broke, it broke. It also shows the one edit a chain cannot catch on its own, a dropped tail, which is what the witness is for. v1 is record, wrap, verify and query. Drift detection, remote sinks, and a Purse adapter are documented as next, not shipped.</p>
       </aside>
     </div></section>
 
