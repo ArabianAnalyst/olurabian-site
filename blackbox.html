@@ -39,7 +39,7 @@
     <section class="section p-hero"><div class="wrap">
       <p class="label accent">blackbox &middot; Evidence Mode</p>
       <h1 class="p-h1">A record of what your agent did, and proof no one edited it.</h1>
-      <p class="p-lede">blackbox writes every action an agent takes to a hash-chained log. Alter, insert, or drop a single record and the chain breaks at exactly that point. Below is that log, live and running the real hash chain. Tamper with it yourself.</p>
+      <p class="p-lede">blackbox writes every action an agent takes to a hash-chained log. Alter, insert, or remove a record from the middle and the chain breaks at exactly that point. Drop the tail and it cannot tell, which is what a witness is for. Below is that log, live and running the real hash chain. Tamper with it yourself.</p>
     </div></section>
 
     <section class="section"><div class="wrap">
@@ -47,7 +47,7 @@
         <p class="label">The log, live</p>
         <div>
           <h2>Change a value. <span class="it">Then verify.</span></h2>
-          <p class="body-lg">Click any cost or name to alter a record, then press <b>Verify chain</b>. Nothing flags the change on its own. <code class="inl">verify()</code> is what catches it, breaks at that exact record, and dims everything after.</p>
+          <p class="body-lg">Click any cost or name to alter a record, or drop the last one, then press <b>Verify chain</b>. Nothing flags the change on its own. <code class="inl">verify()</code> is what catches it, breaks at that exact record, and dims everything after.</p>
         </div>
       </div>
 

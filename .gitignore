@@ -5,3 +5,4 @@ _check-*.png
 _final-*.png
 
 .env*
+.playwright-cli/
